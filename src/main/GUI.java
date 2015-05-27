@@ -5,9 +5,12 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JDialog;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTextPane;
+
 import java.awt.Choice;
+
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -16,16 +19,27 @@ import javax.swing.SwingConstants;
 import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
 import javax.swing.JList;
+import javax.swing.UIManager;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import javax.swing.JMenuItem;
 import javax.swing.JMenu;
 import javax.swing.JPopupMenu;
+
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+
+import src.assets.WebLookAndFeel.*;
+
 
 public class GUI extends JFrame {
+
+	
+	
 
 	
 	
@@ -61,10 +75,80 @@ public class GUI extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		UIManager.setLookAndFeel("com.alee.laf.WebLookAndFeel");
+		
 		JComboBox comboBox_Subregion = new JComboBox();
 		comboBox_Subregion.setBounds(252, 219, 223, 32);
 		contentPane.add(comboBox_Subregion);
 
+		
+		//Regions
+		ArrayList<String> regions = new ArrayList<>();
+		regions.add("North Asia");
+		regions.add("South East Asia");
+		regions.add("North America");
+		regions.add("South America");
+		regions.add("West Europe");
+		regions.add("East Europe");
+		
+		
+		//North Asia
+		ArrayList<String> regionNAsia = new ArrayList<>();
+		
+		regionNAsia.add("Japan - Tokyo");
+		regionNAsia.add("South Korea - Seoul");
+		regionNAsia.add("Taiwan - Taipei");
+		
+		
+		//South East Asia
+		ArrayList<String> regionSEA = new ArrayList<>();
+		
+		regionSEA.add("Hong Kong - Kowloon");
+		regionSEA.add("Singapore - Singapore");
+		regionSEA.add("Malaysia - Kuala Lumpur");
+		
+		
+		//North America
+		ArrayList<String> regionNAmerica = new ArrayList<>();
+		
+		regionNAmerica.add("USA - Los Angeles (China Unicom)");
+		regionNAmerica.add("USA - Las Vegas (China Telcom)");
+		regionNAmerica.add("USA - New York");
+		regionNAmerica.add("USA - Atlanta");
+		regionNAmerica.add("USA - Dallas");
+		regionNAmerica.add("USA - Fremont");
+		regionNAmerica.add("USA - Newark");
+		regionNAmerica.add("Canada - Toronto");
+		regionNAmerica.add("Canada - Vancouver");
+		
+		
+		//West Europe
+		ArrayList<String> regionEUW = new ArrayList<>();
+		
+		regionEUW.add("Germany - Berlin (TBA)");
+		regionEUW.add("France - Paris (TBA)");
+		regionEUW.add("Netherlands - Amsterdam (TBA)");
+		regionEUW.add("Switzerland - Bern (TBA)");
+		
+		
+		//East Europe
+		ArrayList<String> regionEUE = new ArrayList<>();
+		
+		regionEUE.add("United Kingdom - London (TBA)");
+		regionEUE.add("United Kingdom - Manchester (TBA)");
+		
+		//South America
+		ArrayList<String> regionSAmerica = new ArrayList<>();
+		
+		regionSAmerica.add("This region is not yet implemented.");
+		
+		//Africa
+		ArrayList<String> regionAfrica = new ArrayList<>();
+		
+		regionAfrica.add("This region is not yet implemented.");
+		
+		
+		
 		
 		JButton btnConnect = new JButton("Connect");
 		btnConnect.setBounds(229, 284, 141, 35);
@@ -76,38 +160,38 @@ public class GUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				//Checks what is selected in the Region combobox and changes the options listed in the subregion combobox.
+				//TODO: Maybe enable online retrieval?
 				if(comboBox_Region.getSelectedItem() == "North Asia") {
 					
-					//Need to clear the combo box before populating.
+					//Need to clear the combo box before populating. 
+					
+		
 					comboBox_Subregion.removeAllItems();
 					
-					comboBox_Subregion.addItem("Japan - Tokyo");
-					comboBox_Subregion.addItem("South Korea - Seoul");
-					comboBox_Subregion.addItem("Taiwan - Taipei");
-					
-					
+					for(int i = 0; i < regionNAsia.size(); i++){
+
+						comboBox_Subregion.addItem(regionNAsia.get(i));						
+					}
 					
 				} else if(comboBox_Region.getSelectedItem() == "South East Asia") {
 					
 					
 					comboBox_Subregion.removeAllItems();
 					
-					comboBox_Subregion.addItem("Hong Kong - Kowloon");
-					comboBox_Subregion.addItem("Singapore - Singapore");
-					comboBox_Subregion.addItem("Malaysia - Kuala Lumpur");
+					for(int i = 0; i < regionSEA.size(); i++){
+
+						comboBox_Subregion.addItem(regionSEA.get(i));						
+					}
 					
 				} else if(comboBox_Region.getSelectedItem() == "North America") {
 					
 					
 					comboBox_Subregion.removeAllItems();
 					
-					comboBox_Subregion.addItem("USA - Los Angeles (China Unicom)");
-					comboBox_Subregion.addItem("USA - Las Vegas (China Telecom)");
-					comboBox_Subregion.addItem("USA - New York");
-					comboBox_Subregion.addItem("USA - Atlanta (TBA)");
-					comboBox_Subregion.addItem("USA - Dallas (TBA)");
-					comboBox_Subregion.addItem("USA - Fremont (TBA)");
-					comboBox_Subregion.addItem("USA - Newark (TBA)");
+					for(int i = 0; i < regionNAmerica.size(); i++){
+						
+						comboBox_Subregion.addItem(regionNAmerica.get(i));						
+					}
 					
 					
 					
@@ -115,26 +199,32 @@ public class GUI extends JFrame {
 					
 					comboBox_Subregion.removeAllItems();
 					
-					comboBox_Subregion.addItem("");
-					comboBox_Subregion.addItem("");
+					for(int i = 0; i < regionSAmerica.size(); i++){
+						
+						comboBox_Subregion.addItem(regionSAmerica.get(i));						
+					}
 					
 
 				} else if(comboBox_Region.getSelectedItem() == "West Europe") {
 					
 					comboBox_Subregion.removeAllItems();
 					
-					comboBox_Subregion.addItem("Germany - Berlin (TBA)");
-					comboBox_Subregion.addItem("France - Paris (TBA)");
-					comboBox_Subregion.addItem("Netherlands - Amsterdam (TBA)");
-					comboBox_Subregion.addItem("Switzerland - Bern (TBA)");
+					for(int i = 0; i < regionEUW.size(); i++){
+						
+						comboBox_Subregion.addItem(regionEUW.get(i));
+						
+					}
 					
 					
 				} else if(comboBox_Region.getSelectedItem() == "East Europe") {
 					
 					comboBox_Subregion.removeAllItems();
 					
-					comboBox_Subregion.addItem("United Kingdom - London (TBA)");
-					comboBox_Subregion.addItem("United Kingdom - Manchester (TBA)");
+					for(int i = 0; i < regionEUE.size(); i++){
+
+						comboBox_Subregion.addItem(regionEUE.get(i));
+						
+					}
 					
 					
 				}
@@ -144,13 +234,12 @@ public class GUI extends JFrame {
 		});
 		contentPane.add(comboBox_Region);
 		
-		//Populate menu items for regions. This will always be p
-		comboBox_Region.addItem("North Asia");
-		comboBox_Region.addItem("South East Asia");
-		comboBox_Region.addItem("North America");
-		comboBox_Region.addItem("South America");
-		comboBox_Region.addItem("West Europe");
-		comboBox_Region.addItem("East Europe");
+		//Populate menu items for regions.
+		for(int i = 0; i < regions.size(); i++) {
+			
+			comboBox_Region.addItem(regions.get(i));
+			
+		}
 		
 		
 		
@@ -173,7 +262,26 @@ public class GUI extends JFrame {
 		lblServer.setBounds(139, 222, 92, 26);
 		lblServer.setHorizontalAlignment(SwingConstants.CENTER);
 		contentPane.add(lblServer);
+		
+		JMenuBar menuBar = new JMenuBar();
+		menuBar.setBounds(0, 0, 623, 40);
+		contentPane.add(menuBar);
+		
+		JMenuItem mntmPref = new JMenuItem("Preferences");
+		mntmPref.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				
+				
+				
+			}
+		});
+		menuBar.add(mntmPref);
 	}
+	
+
+	
+	
 	private static void addPopup(Component component, final JPopupMenu popup) {
 		component.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
