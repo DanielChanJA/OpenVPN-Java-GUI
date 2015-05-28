@@ -28,12 +28,13 @@ import javax.swing.JMenuItem;
 import javax.swing.JMenu;
 import javax.swing.JPopupMenu;
 
+import com.alee.laf.WebLookAndFeel;
+
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
-import src.assets.WebLookAndFeel.*;
 
 
 public class GUI extends JFrame {
@@ -75,7 +76,9 @@ public class GUI extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		UIManager.setLookAndFeel("com.alee.laf.WebLookAndFeel");
+		WebLookAndFeel.install();
+		
+		
 		
 		JComboBox comboBox_Subregion = new JComboBox();
 		comboBox_Subregion.setBounds(252, 219, 223, 32);
