@@ -34,6 +34,7 @@ import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.awt.Font;
 
 
 
@@ -43,7 +44,7 @@ public class GUI extends JFrame {
 	
 
 	
-	
+	String IPAddress;
 	
 	
 	
@@ -70,7 +71,7 @@ public class GUI extends JFrame {
 	 */
 	public GUI() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 649, 414);
+		setBounds(100, 100, 649, 664);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -81,7 +82,7 @@ public class GUI extends JFrame {
 		
 		
 		JComboBox comboBox_Subregion = new JComboBox();
-		comboBox_Subregion.setBounds(252, 219, 223, 32);
+		comboBox_Subregion.setBounds(252, 407, 223, 32);
 		contentPane.add(comboBox_Subregion);
 
 		
@@ -154,11 +155,18 @@ public class GUI extends JFrame {
 		
 		
 		JButton btnConnect = new JButton("Connect");
-		btnConnect.setBounds(229, 284, 141, 35);
+		btnConnect.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				//Run certain methods according to which server is selected.
+				
+			}
+		});
+		btnConnect.setBounds(139, 473, 141, 35);
 		contentPane.add(btnConnect);
 		
 		JComboBox comboBox_Region = new JComboBox();
-		comboBox_Region.setBounds(252, 153, 223, 32);
+		comboBox_Region.setBounds(252, 341, 223, 32);
 		comboBox_Region.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -248,21 +256,21 @@ public class GUI extends JFrame {
 		
 		
 		JLabel WelcomeMessage = new JLabel("Welcome to the OpenVPN Connections Manager");
-		WelcomeMessage.setBounds(70, 90, 465, 26);
+		WelcomeMessage.setBounds(71, 47, 465, 26);
 		WelcomeMessage.setHorizontalAlignment(SwingConstants.CENTER);
 		contentPane.add(WelcomeMessage);
 		
 		JLabel lblVersion = new JLabel("Version 0.01");
-		lblVersion.setBounds(508, 317, 115, 26);
+		lblVersion.setBounds(508, 567, 115, 26);
 		contentPane.add(lblVersion);
 		
 		JLabel lblRegion = new JLabel("Region:");
-		lblRegion.setBounds(139, 156, 92, 26);
+		lblRegion.setBounds(139, 344, 92, 26);
 		lblRegion.setHorizontalAlignment(SwingConstants.CENTER);
 		contentPane.add(lblRegion);
 		
 		JLabel lblServer = new JLabel("Server:");
-		lblServer.setBounds(139, 222, 92, 26);
+		lblServer.setBounds(139, 410, 92, 26);
 		lblServer.setHorizontalAlignment(SwingConstants.CENTER);
 		contentPane.add(lblServer);
 		
@@ -280,6 +288,20 @@ public class GUI extends JFrame {
 			}
 		});
 		menuBar.add(mntmPref);
+		
+		//Check for current IP address.
+		IPCheck temp_IP = new IPCheck();
+		
+		IPAddress = temp_IP.ipCheck();
+		JLabel lblIpAddressIs = new JLabel("Current IP Address: " + IPAddress);
+		lblIpAddressIs.setFont(new Font("Tahoma", Font.PLAIN, 38));
+		lblIpAddressIs.setHorizontalAlignment(SwingConstants.CENTER);
+		lblIpAddressIs.setBounds(21, 242, 581, 78);
+		contentPane.add(lblIpAddressIs);
+		
+		JButton btnDisconnect = new JButton("Disconnect");
+		btnDisconnect.setBounds(334, 473, 141, 35);
+		contentPane.add(btnDisconnect);
 	}
 	
 

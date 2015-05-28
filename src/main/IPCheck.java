@@ -13,7 +13,7 @@ public class IPCheck {
 	URL url;
 	String ipAddress;
 	
-	public void ipCheck() {
+	public String ipCheck() {
 		
 		
 		
@@ -38,6 +38,8 @@ public class IPCheck {
 			System.out.println("Error reading in information.");
 			
 		}
+		
+		return ipAddress;
 		
 		
 		
