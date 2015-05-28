@@ -11,7 +11,7 @@ public class IPCheck {
 	
 	
 	URL url;
-	
+	String ipAddress;
 	
 	public void ipCheck() {
 		
@@ -22,7 +22,8 @@ public class IPCheck {
 		
 			url = new URL("http://checkip.amazonaws.com/");
 			BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
-			System.out.println(br.readLine());
+			ipAddress = br.readLine();
+			System.out.println("Your current IP address is: " + ipAddress);
 			
 			
 		} catch (UnknownHostException e) {
