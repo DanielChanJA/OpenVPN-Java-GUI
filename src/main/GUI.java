@@ -47,7 +47,8 @@ public class GUI extends JFrame {
 	
 
 	
-	String IPAddress;
+	String IPAddress, NotImplemented, ConnectingMsg;
+	
 	
 	
 	
@@ -84,6 +85,9 @@ public class GUI extends JFrame {
 		
 		IPCheck temp_IP = new IPCheck();
 		IPAddress = temp_IP.ipCheck();
+		
+		NotImplemented = "This server has yet to be implemented.";
+		ConnectingMsg = "Connecting... Please wait for a few moments.";
 		
 		
 		JComboBox comboBox_Subregion = new JComboBox();
@@ -178,8 +182,146 @@ public class GUI extends JFrame {
 				);
 				
 				
-				
+
 				//Run certain methods according to which server is selected.
+				
+				if(comboBox_Subregion.getSelectedItem() == "Japan - Tokyo" ) {
+					
+					System.out.println(NotImplemented);
+					
+				}
+				
+				else if(comboBox_Subregion.getSelectedItem() == "South Korea - Seoul") {
+					
+					System.out.println(NotImplemented);
+					
+				} 
+				
+				else if(comboBox_Subregion.getSelectedItem() == "Taiwan - Taipei") {
+					
+					System.out.println(NotImplemented);
+					
+				}
+				
+				else if(comboBox_Subregion.getSelectedItem() == "Hong Kong - Kowloon") {
+					
+					System.out.println(ConnectingMsg);
+					
+					OpenVPN ovpnConn = new OpenVPN();
+					ovpnConn.openvpn_HK1();
+					
+				}
+				
+				else if(comboBox_Subregion.getSelectedItem() == "Singapore - Singapore") {
+					
+					System.out.println(NotImplemented);
+					
+				}
+				
+				else if(comboBox_Subregion.getSelectedItem() == "Malaysia - Kuala Lumpur") {
+					
+					System.out.println(NotImplemented);
+					
+				}
+				
+				else if(comboBox_Subregion.getSelectedItem() == "USA - Los Angeles (China Unicom)") {
+					
+					System.out.println(ConnectingMsg);
+					
+					OpenVPN ovpnConn = new OpenVPN();
+					ovpnConn.openvpn_LAX1();
+					
+				}
+				
+				else if(comboBox_Subregion.getSelectedItem() == "USA - Las Vegas (China Telcom)") {
+					
+					System.out.println(ConnectingMsg);
+					
+					OpenVPN ovpnConn = new OpenVPN();
+					ovpnConn.openvpn_LV1();
+					
+				}
+				
+				else if(comboBox_Subregion.getSelectedItem() == "USA - New York") {
+					
+					System.out.println(ConnectingMsg);
+					
+					OpenVPN ovpnConn = new OpenVPN();
+					ovpnConn.openvpn_NY1();
+					
+				}
+				
+				else if(comboBox_Subregion.getSelectedItem() == "USA - Atlanta") {
+					
+					System.out.println(NotImplemented);
+					
+				}
+				
+				else if(comboBox_Subregion.getSelectedItem() == "USA - Dallas") {
+					
+					System.out.println(NotImplemented);
+					
+				}
+				
+				else if(comboBox_Subregion.getSelectedItem() == "USA - Fremont") {
+					
+					System.out.println(NotImplemented);
+					
+				}
+				
+				else if(comboBox_Subregion.getSelectedItem() == "USA - Newark") {
+					
+					System.out.println(NotImplemented);
+					
+				}
+				
+				else if(comboBox_Subregion.getSelectedItem() == "Canada - Toronto") {
+					
+					System.out.println(NotImplemented);
+					
+				} 
+				
+				else if(comboBox_Subregion.getSelectedItem() == "Canada - Vancouver") {
+					
+					System.out.println(NotImplemented);
+					
+				}
+				
+				else if(comboBox_Subregion.getSelectedItem() == "Germany - Berlin (TBA)") {
+					
+					System.out.println(NotImplemented);
+					
+				}
+				
+				else if(comboBox_Subregion.getSelectedItem() == "France - Paris (TBA)") {
+					
+					System.out.println(NotImplemented);
+					
+				}
+				
+				else if(comboBox_Subregion.getSelectedItem() == "Netherlands - Amsterdam (TBA)") {
+					
+					System.out.println(NotImplemented);
+					
+				}
+				
+				else if(comboBox_Subregion.getSelectedItem() == "Switzerland - Bern (TBA)") {
+					
+					System.out.println(NotImplemented);
+					
+				}
+				
+				else if(comboBox_Subregion.getSelectedItem() == "United Kingdom - London (TBA)") {
+					
+					System.out.println(NotImplemented);
+					
+				}
+				
+				else if(comboBox_Subregion.getSelectedItem() == "United Kingdom - Manchester (TBA)") {
+					
+					System.out.println(NotImplemented);
+					
+				}
 				
 			}
 		});
