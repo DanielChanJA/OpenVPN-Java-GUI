@@ -36,6 +36,9 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.awt.Font;
 
+import java.util.Timer;  
+import java.util.TimerTask;
+
 
 
 public class GUI extends JFrame {
@@ -79,6 +82,8 @@ public class GUI extends JFrame {
 		
 		WebLookAndFeel.install();
 		
+		IPCheck temp_IP = new IPCheck();
+		IPAddress = temp_IP.ipCheck();
 		
 		
 		JComboBox comboBox_Subregion = new JComboBox();
@@ -157,6 +162,22 @@ public class GUI extends JFrame {
 		JButton btnConnect = new JButton("Connect");
 		btnConnect.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
+				//IP Update method 1 minute after the connect button is pressed.
+				new Timer().schedule(
+						new TimerTask() {
+							@Override
+							public void run() {
+								
+								IPAddress = temp_IP.ipCheck();
+								
+							}
+						}, 
+						60000
+						
+				);
+				
+				
 				
 				//Run certain methods according to which server is selected.
 				
@@ -290,9 +311,7 @@ public class GUI extends JFrame {
 		menuBar.add(mntmPref);
 		
 		//Check for current IP address.
-		IPCheck temp_IP = new IPCheck();
-		
-		IPAddress = temp_IP.ipCheck();
+
 		JLabel lblIpAddressIs = new JLabel("Current IP Address: " + IPAddress);
 		lblIpAddressIs.setFont(new Font("Tahoma", Font.PLAIN, 38));
 		lblIpAddressIs.setHorizontalAlignment(SwingConstants.CENTER);
